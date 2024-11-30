@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Purchase_summary extends Model
 {
     protected $fillable = [
-        'food_id',
-        'total_price',
-        'cuantity'
+        'folio'
     ];
 
     public function food()
     {
-        return $this->belongsTo(Food::class);
+        return $this->belongsToMany(Food::class, 'food_purchase_summary')
+            ->withPivot('quantity', 'price')
+            ->withTimestamps();
     }
 }

@@ -17,4 +17,11 @@ class Food extends Model
         'description',
         'is_available',
     ];
+
+    public function purchase_summaries()
+    {
+        return $this->belongsToMany(Purchase_summary::class, 'food_purchase_summary')
+            ->withPivot('quantity', 'price')
+            ->withTimestamps();
+    }
 }

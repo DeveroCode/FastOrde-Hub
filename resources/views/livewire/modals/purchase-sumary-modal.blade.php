@@ -43,9 +43,15 @@
                 </section>
             </div>
             <div class="p-6">
-                <div class="flex mb-3 justify-between font-semibold text-xl">
-                    <p>Total a pagar:</p>
-                    <span>${{ $total_pay }}</span>
+                <div class="flex flex-col space-y-2 mb-3">
+                    <div class="flex justify-between font-semibold text-xl">
+                        <p>Folio de Compra:</p>
+                        <span>#{{ $folio }}</span>
+                    </div>
+                    <div class="flex justify-between font-semibold text-xl">
+                        <p>Total a pagar:</p>
+                        <span>${{ $total_pay }}</span>
+                    </div>
                 </div>
                 <button
                     class="w-full py-3 bg-orange-500 text-white font-semibold text-sm rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transition-all"

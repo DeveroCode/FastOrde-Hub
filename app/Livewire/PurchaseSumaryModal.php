@@ -2,17 +2,24 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
 use App\Models\Food;
-use App\Models\Purchase_summary;
 use Livewire\Component;
+use App\Models\Purchase_summary;
 
 class PurchaseSumaryModal extends Component
 {
     public $cuantity = 1;
     public $isOpen = false;
     public $selectedFoods = [];
+    public $folio;
 
     public $listeners = ['openModal'];
+
+    public function mount()
+    {
+        $this->folio = $this->createFolio();
+    }
 
     public function openModal($food = null)
     {
@@ -40,11 +47,21 @@ class PurchaseSumaryModal extends Component
 
     public function createOrder()
     {
+
+
+        $purchase = Purchase_summary::create([
+            'folio' => $this->folio,
+        ]);
+
         foreach ($this->selectedFoods as $selectedFood) {
-            Purchase_summary::create([
-                'food_id' => $selectedFood['food']->id,
-                'quantity' => $selectedFood['cuantity'],
-                'total_price' => $this->updatePrice(),
+            $food = $selectedFood['food'];
+            $quantity = $selectedFood['cuantity'];
+            $totalPrice = $food->price * $quantity;
+
+            // Insertar en la tabla pivote
+            $purchase->food()->attach($food->id, [
+                'quantity' => $quantity,
+                'total_price' => $totalPrice,
             ]);
         }
 
@@ -55,11 +72,22 @@ class PurchaseSumaryModal extends Component
         return redirect()->route('home');
     }
 
+    public function createFolio()
+    {
+        do {
+            $folio = strtoupper(substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 5));
+        } while (Purchase_summary::where('folio', $folio)->exists());
+
+        return $folio;
+    }
+
     public function incrementCuantity($foodId)
     {
         foreach ($this->selectedFoods as $i => $selectedFood) {
             if ($selectedFood['food']->id === $foodId) {
-                if ($this->selectedFoods[$i]['cuantity'] < 10) return $this->selectedFoods[$i]['cuantity']++;
+                if ($this->selectedFoods[$i]['cuantity'] < 10) {
+                    $this->selectedFoods[$i]['cuantity']++;
+                }
             }
         }
 
@@ -80,7 +108,9 @@ class PurchaseSumaryModal extends Component
     {
         foreach ($this->selectedFoods as $i => $selectedFood) {
             if ($selectedFood['food']->id === $foodId) {
-                if ($this->selectedFoods[$i]['cuantity'] > 1) return $this->selectedFoods[$i]['cuantity']--;
+                if ($this->selectedFoods[$i]['cuantity'] > 1) {
+                    $this->selectedFoods[$i]['cuantity']--;
+                }
             }
         }
 
@@ -92,7 +122,8 @@ class PurchaseSumaryModal extends Component
     {
         return view('livewire.modals.purchase-sumary-modal', [
             'selectedFoods' => $this->selectedFoods,
-            'total_pay' => $this->updatePrice()
+            'total_pay' => $this->updatePrice(),
+            'folio' => $this->folio
         ]);
     }
 }
