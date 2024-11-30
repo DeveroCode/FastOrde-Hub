@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Food;
+use App\Http\Controllers\PurchaseSummaryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,6 +11,10 @@ Route::get('/', function () {
 
 Route::controller(FoodController::class)->group(function () {
     Route::get('/foods', 'index')->name('foods.index');
+});
+
+Route::controller(PurchaseSummaryController::class)->group(function () {
+    Route::get('/orders', 'index')->name('orders.index');
 });
 
 Route::get('/dashboard', function () {
