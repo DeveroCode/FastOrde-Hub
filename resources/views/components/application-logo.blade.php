@@ -1,0 +1,1 @@
+<img src="{{ asset('first_logo.png') }}" alt="logo de la empresa" class="w-20 h-20 fill-current">
