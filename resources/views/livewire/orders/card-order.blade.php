@@ -1,4 +1,5 @@
 <div class="flex flex-col gap-10">
+    <h2 class="text-2xl font-semibold text-gray-800">Órdenes en Cola</h2>
     @foreach ($orders as $folio => $group)
     <div class="flex items-center gap-3">
         <h2 class="text-2xl font-semibold text-gray-800">Órdenes con Folio No. #{{ $folio }}</h2>
@@ -12,7 +13,7 @@
             @endforeach
         </select>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+    <div class="flex gap-2 flex-wrap">
         @foreach ($group as $order)
         <div
             class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out relative">
