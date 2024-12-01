@@ -51,6 +51,7 @@ class PurchaseSumaryModal extends Component
 
         $purchase = Purchase_summary::create([
             'folio' => $this->folio,
+            'status_id' => 1
         ]);
 
         foreach ($this->selectedFoods as $selectedFood) {
