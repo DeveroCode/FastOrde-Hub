@@ -1,7 +1,10 @@
-<div class="bg-white px-3 py-3 rounded-lg overflow-y-auto h-screen">
-    <h2 class="text-2xl font-semibold text-gray-800">Ordenes en Proceso</h2>
+<div class="bg-white rounded-lg overflow-y-auto h-screen shadow-xl">
+    <div class="border-b border-gray-200 pb-2 px-3 py-3">
+        <h2 class="text-2xl font-semibold text-gray-800">Ordenes en Proceso</h2>
+    </div>
     @foreach ($orders as $folio => $group)
-    <section class="mt-12 shadow-xl rounded-br-lg rounded-bl-lg">
+    <section
+        class="mt-12 rounded-br-lg rounded-bl-lg px-3 shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
         {{-- Header Ticket --}}
         <div class="bg-primary py-1 px-3 rounded-tl-lg rounded-tr-lg flex items-center justify-between">
             <div class="flex items-center gap-3 text-white">
