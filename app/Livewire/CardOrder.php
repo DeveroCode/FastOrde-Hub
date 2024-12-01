@@ -32,6 +32,8 @@ class CardOrder extends Component
                 'purchase_summaries.folio',
                 'purchase_summaries.status_id'
             )
+            ->where('purchase_summaries.status_id', '!=', 3)
+            ->where('purchase_summaries.status_id', '!=', 2)
             ->orderBy('purchase_summaries.folio', 'desc')
             ->get()
             ->groupBy('folio');
