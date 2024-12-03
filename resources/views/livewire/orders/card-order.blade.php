@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-10">
+<div class="flex flex-col gap-10" wire:poll.delay.500ms="loadOrders">
     <h2 class="text-2xl font-semibold text-gray-800">Órdenes en Cola</h2>
     @foreach ($orders as $folio => $group)
     <div class="flex items-center gap-3">

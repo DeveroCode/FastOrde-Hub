@@ -1,7 +1,12 @@
-<div class="bg-white rounded-lg overflow-y-auto h-screen shadow-xl">
+<div class="bg-white rounded-lg overflow-y-auto h-screen shadow-xl" wire:poll.delay.50ms>
     <div class="border-b border-gray-200 pb-2 px-3 py-3">
         <h2 class="text-2xl font-semibold text-gray-800">Ordenes en Proceso</h2>
     </div>
+
+
+    @if ($orders->isEmpty())
+    <h2 class="text-2xl font-semibold text-gray-800 text-center my-64">Sin ordenes activas</h2>
+    @else
     @foreach ($orders as $folio => $group)
     <section
         class="mt-12 rounded-br-lg rounded-bl-lg px-3 shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
@@ -72,4 +77,5 @@
             </div>
     </section>
     @endforeach
+    @endif
 </div>

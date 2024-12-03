@@ -9,19 +9,24 @@ use Livewire\Component;
 
 class CardOrder extends Component
 {
+    public $orders = [];
+
+    public function mount()
+    {
+        $this->loadOrders();
+    }
+
     public function updateStatus($status_id, $folio)
     {
         $purchase_summary = Purchase_summary::where('folio', $folio)->first();
         $purchase_summary->update(['status_id' => $status_id]);
 
         notify()->success('Orden actualizada!');
-        return redirect()->route('orders.index');
     }
 
-    public function render()
+    public function loadOrders()
     {
-        $status = Status::all();
-        $orders = DB::table('food_purchase_summary')
+        $this->orders = DB::table('food_purchase_summary')
             ->join('food', 'food_purchase_summary.food_id', '=', 'food.id')
             ->join('purchase_summaries', 'food_purchase_summary.purchase_summary_id', '=', 'purchase_summaries.id')
             ->select(
@@ -30,13 +35,19 @@ class CardOrder extends Component
                 'food_purchase_summary.purchase_summary_id',
                 'food.name as name',
                 'purchase_summaries.folio',
-                'purchase_summaries.status_id'
+                'purchase_summaries.status_id',
+                'purchase_summaries.created_at'
             )
             ->where('purchase_summaries.status_id', '!=', 3)
             ->where('purchase_summaries.status_id', '!=', 2)
-            ->orderBy('purchase_summaries.folio', 'desc')
+            ->orderBy('purchase_summaries.created_at', 'desc')
             ->get()
             ->groupBy('folio');
-        return view('livewire.orders.card-order', ['orders' => $orders, 'status' => $status]);
+    }
+
+    public function render()
+    {
+        $status = Status::all();
+        return view('livewire.orders.card-order', ['status' => $status]);
     }
 }

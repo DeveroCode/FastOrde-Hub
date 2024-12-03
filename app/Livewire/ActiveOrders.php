@@ -16,7 +16,6 @@ class ActiveOrders extends Component
         $purchase_summary->update(['status_id' => 3]);
 
         notify()->success('Orden confirmada y lista para entrega!');
-        return redirect()->route('orders.index');
     }
 
     public function render()
