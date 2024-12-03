@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Food;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 
-abstract class Controller
+class Controller extends BaseController
 {
-    public function create(Food $food) {}
+    use AuthorizesRequests, ValidatesRequests;
 }
