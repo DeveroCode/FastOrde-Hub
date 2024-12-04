@@ -1,25 +1,34 @@
 <nav x-data="{ open: false }" class="border-b border-gray-100 bg-white">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl flex justify-between mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center">
+            <a href="{{ route('home') }}">
+                <x-application-logo />
+            </a>
+        </div>
         <div class="flex justify-between h-24">
-            <div class="flex items-center">
-                <a href="{{ route('dashboard') }}">
-                    <x-application-logo />
-                </a>
-            </div>
             @guest
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex sm:items-center">
-                <x-nav-link href="#categorias">
-                    {{ __('Iniciar Sesión') }}
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <x-nav-link :href="route('login')">
+                    {{ __('Iniciar sesión') }}
                 </x-nav-link>
             </div>
             @endguest
             @auth
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                    {{ __('Ordenes') }}
                 </x-nav-link>
+                {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('verifier.index')">
+                    {{ __('Verificador de Ordenes') }}
+                </x-nav-link> --}}
+                <x-nav-link :href="route('orders.check')" :active="request()->routeIs('orders.check')">
+                    {{ __('Entregas') }}
+                </x-nav-link>
+                {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Crear Orden') }}
+                </x-nav-link> --}}
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -50,7 +59,7 @@
                             @csrf
 
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                            this.closest('form').submit();">
+                                        this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -58,8 +67,7 @@
                 </x-dropdown>
             </div>
 
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
+            <div class="-me-2 sm:flex items-center md:hidden">
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -87,8 +95,8 @@
         <!-- Responsive Settings Options -->
         @auth
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('orders.index')">
+                {{ __('Ordenes') }}
             </x-responsive-nav-link>
         </div>
 
