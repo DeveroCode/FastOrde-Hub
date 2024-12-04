@@ -17,6 +17,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(OrdersController::class)->group(function () {
         Route::get('/orders', 'index')->name('orders.index');
         Route::get('/orders/check', 'show')->name('orders.check');
+        Route::get('/orders/create-order', 'store')->name('orders.store');
     });
 });
 

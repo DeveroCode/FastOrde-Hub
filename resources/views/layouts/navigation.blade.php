@@ -26,9 +26,9 @@
                 <x-nav-link :href="route('orders.check')" :active="request()->routeIs('orders.check')">
                     {{ __('Entregas') }}
                 </x-nav-link>
-                {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <x-nav-link :href="route('orders.store')" :active="request()->routeIs('orders.store')">
                     {{ __('Crear Orden') }}
-                </x-nav-link> --}}
+                </x-nav-link>
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

@@ -1,7 +1,7 @@
 <div class="flex gap-10 flex-wrap items-center justify-center">
     @foreach ($foods as $food)
-    <div
-        class="bg-white p-6 rounded-lg shadow-lg max-w-xs w-full hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-xs w-full hover:shadow-2xl transition-shadow duration-300 ease-in-out"
+        wire:key='{{ $food->id }}'>
         <!-- Imagen -->
         <div class="bg-gray-50 p-4 rounded-md">
             <img src="{{ asset('hamburguer.png') }}" alt="{{ $food->name }}"
@@ -23,7 +23,7 @@
         </div>
 
         <!-- Botón Agregar -->
-        <button wire:click="$dispatch('openModal',  { food: {{ $food->id }} })"
+        <button wire:click="$dispatch('openModal', { food: '{{ $food->id }}' })"
             class="mt-6 inline-flex items-center justify-center w-full py-3 bg-primary text-white font-semibold text-sm rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-all">
             Agregar!
         </button>

@@ -14,4 +14,9 @@ class OrdersController extends Controller
     {
         return view('orders.check');
     }
+
+    public function store()
+    {
+        return view('orders.store');
+    }
 }

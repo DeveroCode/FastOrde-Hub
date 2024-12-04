@@ -16,7 +16,7 @@
                     </h2>
 
                     <button class="flex items-center justify-center w-8 h-8 bg-orange-500 text-white rounded-full"
-                        wire:click="$dispatch('openModal')">
+                        wire:click="$set('isOpen', false)">
                         x
                     </button>
                 </div>

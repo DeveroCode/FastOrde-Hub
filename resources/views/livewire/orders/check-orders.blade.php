@@ -1,6 +1,7 @@
-<div class="flex flex-wrap flex-row gap-10 w-[26%]" wire:poll.delay.500ms="loadOrder">
+<div class="flex flex-wrap gap-10" wire:poll.delay.500ms="loadOrder">
     @foreach ($orders as $folio => $group)
-    <div class="bg-white py-3 rounded-md shadow-md">
+    <div
+        class="bg-white py-3 rounded-md shadow-md w-[26%] hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer">
         <div class="flex gap-10  px-4 justify-between items-center">
             <p class="text-xl font-bold text-gray-800">Pedido Listo!</p>
             <span class="py-1 px-4 bg-primary text-white text-sm font-semibold rounded-full">#{{ $folio }}</span>

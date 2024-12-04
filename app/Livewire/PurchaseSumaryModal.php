@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Carbon\Carbon;
 use App\Models\Food;
 use Livewire\Component;
+use Livewire\Attributes\On;
 use App\Models\Purchase_summary;
 
 class PurchaseSumaryModal extends Component
@@ -14,16 +15,16 @@ class PurchaseSumaryModal extends Component
     public $selectedFoods = [];
     public $folio;
 
-    public $listeners = ['openModal'];
+    protected $listeners = ['openModal' => 'modal'];
 
     public function mount()
     {
         $this->folio = $this->createFolio();
     }
 
-    public function openModal($food = null)
+    public function modal($food = null)
     {
-        $this->isOpen = !$this->isOpen;
+        $this->isOpen = true;
         if ($food) {
             $food = Food::find($food);
 
@@ -42,6 +43,7 @@ class PurchaseSumaryModal extends Component
             }
 
             $this->updatePrice();
+            $food = '';
         }
     }
 
