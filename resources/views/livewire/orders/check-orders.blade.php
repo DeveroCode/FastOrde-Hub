@@ -1,4 +1,8 @@
 <div class="flex flex-wrap gap-10" wire:poll.delay.500ms="loadOrder">
+
+    @if ($orders->isEmpty())
+    <h2 class="text-center text-2xl font-semibold text-gray-800">Aun no hay ordenes listas para entrega!</h2>
+    @else
     @foreach ($orders as $folio => $group)
     <div
         class="bg-white py-3 rounded-md shadow-md w-[26%] hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer">
@@ -33,4 +37,5 @@
         </div>
     </div>
     @endforeach
+    @endif
 </div>

@@ -1,4 +1,4 @@
-<div class="bg-white rounded-lg overflow-y-auto h-screen shadow-xl" wire:poll.delay.50ms>
+<div class="flex flex-col gap-10 bg-white rounded-lg overflow-y-auto h-screen shadow-xl" wire:poll.delay.50ms>
     <div class="border-b border-gray-200 pb-2 px-3 py-3">
         <h2 class="text-2xl font-semibold text-gray-800">Ordenes en Proceso</h2>
     </div>
