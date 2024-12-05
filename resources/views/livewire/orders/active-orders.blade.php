@@ -8,8 +8,7 @@
     <h2 class="text-2xl font-semibold text-gray-800 text-center my-64">Sin ordenes activas</h2>
     @else
     @foreach ($orders as $folio => $group)
-    <section
-        class="mt-12 rounded-br-lg rounded-bl-lg px-3 shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+    <section class="px-3">
         {{-- Header Ticket --}}
         <div class="bg-primary py-1 px-3 rounded-tl-lg rounded-tr-lg flex items-center justify-between">
             <div class="flex items-center gap-3 text-white">
@@ -33,7 +32,7 @@
         </div>
 
         {{-- Body Ticket --}}
-        <div class="px-4">
+        <div class="rounded-br-lg rounded-bl-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
             <div class="flex justify-between items-center py-3 px-3 border-b border-gray-100">
                 <div class="flex items-center gap-3">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
