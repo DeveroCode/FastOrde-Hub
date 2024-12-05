@@ -7,16 +7,19 @@ use Livewire\Component;
 
 class OpenModalButton extends Component
 {
-    public $open = false;
-    #[On('isOpen')]
-    public function setValue($value)
+    public $visible = false;
+
+    public function mount()
     {
-        $this->open = $value;
+        if (request()->routeIs('orders.index') || request()->routeIs('orders.check')) {
+            $this->visible = false;
+        } else {
+            $this->visible = true;
+        }
     }
+
     public function render()
     {
-        return view('livewire.open-modal-button', [
-            'open' => $this->open
-        ]);
+        return view('livewire.open-modal-button');
     }
 }
