@@ -1,6 +1,6 @@
 <div>
     @if($isOpen)
-    <div class="fixed inset-0 z-50 flex justify-end items-start bg-black bg-opacity-50 transition-opacity duration-300">
+    <div class="fixed inset-0 flex justify-end items-start bg-black bg-opacity-50 transition-opacity duration-300 z-50">
         <aside class="xs:w-full md:w-1/4 h-screen bg-white shadow-xl overflow-y-auto flex flex-col justify-between">
             <div class="p-6 flex-grow">
                 <div class="flex items-center mt-5 mb-6 space-x-4 text-orange-500">

@@ -45,6 +45,7 @@ class PurchaseSumaryModal extends Component
             $this->updatePrice();
             $food = '';
         }
+        $this->dispatch('isOpen', $this->isOpen);
     }
 
     public function createOrder()

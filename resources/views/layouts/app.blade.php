@@ -37,7 +37,7 @@
         </main>
 
         <livewire:purchase-sumary-modal />
-        <div class="fixed bottom-4 right-4 z-50">
+        <div class="fixed bottom-4 right-4 z-10">
             <livewire:open-modal-button />
         </div>
         <x-notify::notify />
