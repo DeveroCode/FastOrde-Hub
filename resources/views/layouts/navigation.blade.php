@@ -14,23 +14,12 @@
                 </x-nav-link>
             </div>
             @endguest
-            @auth
+            @if(Auth::check() && Auth::user()->rol !== 'admin')
             <!-- Navigation Links -->
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
-                    {{ __('Ordenes') }}
-                </x-nav-link>
-                {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('verifier.index')">
-                    {{ __('Verificador de Ordenes') }}
-                </x-nav-link> --}}
-                <x-nav-link :href="route('orders.check')" :active="request()->routeIs('orders.check')">
-                    {{ __('Entregas') }}
-                </x-nav-link>
-                <x-nav-link :href="route('orders.store')" :active="request()->routeIs('orders.store')">
-                    {{ __('Crear Orden') }}
-                </x-nav-link>
-            </div>
-            <!-- Settings Dropdown -->
+            <livewire:nav-user />
+            @else
+            <livewire:nav-admin />
+            @endif
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -79,7 +68,6 @@
                     </svg>
                 </button>
             </div>
-            @endauth
         </div>
     </div>
 
