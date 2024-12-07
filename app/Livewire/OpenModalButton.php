@@ -11,7 +11,7 @@ class OpenModalButton extends Component
 
     public function mount()
     {
-        if (request()->routeIs('orders.index') || request()->routeIs('orders.check')) {
+        if (request()->routeIs('orders.index') || request()->routeIs('orders.check') || request()->routeIs('dashboard.*')) {
             $this->visible = false;
         } else {
             $this->visible = true;
