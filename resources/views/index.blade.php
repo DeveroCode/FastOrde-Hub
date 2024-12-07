@@ -1,4 +1,9 @@
 <x-app-layout>
+    @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
     <div class="py-20 md:py-24 overflow-hidden">
         <section
             class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:my-auto lg:max-w-7xl flex items-center justify-between">

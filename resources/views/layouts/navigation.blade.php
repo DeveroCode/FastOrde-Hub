@@ -14,7 +14,8 @@
                 </x-nav-link>
             </div>
             @endguest
-            @if(Auth::check() && Auth::user()->rol !== 'admin')
+            @auth
+            @if(Auth::user()->rol === 'user')
             <!-- Navigation Links -->
             <livewire:nav-user />
             @else
@@ -68,6 +69,7 @@
                     </svg>
                 </button>
             </div>
+            @endauth
         </div>
     </div>
 

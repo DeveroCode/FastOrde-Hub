@@ -24,7 +24,7 @@ class UsersSeed extends Seeder
             'name' => 'Carlos',
             'email' => 'carlos@devero.com',
             'password' => Hash::make('password'),
-            'rol' => 'admin'
+            'rol' => 'user'
         ]);
     }
 }
