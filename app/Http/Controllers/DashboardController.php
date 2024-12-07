@@ -11,11 +11,15 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', IsAdmin::class]);
-
     }
 
     public function index()
     {
         return view('dashboard.index');
+    }
+
+    public function create()
+    {
+        return view('dashboard.create');
     }
 }

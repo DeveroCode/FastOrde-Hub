@@ -27,6 +27,7 @@ Route::controller(OrdersController::class)->group(function () {
 Route::middleware(['auth', 'verified', IsAdmin::class])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/administration/index', 'index')->name('dashboard.index');
+        Route::get('/add-food', 'create')->name('dashboard.create');
     });
 
     Route::controller(ProfileController::class)->group(function () {
