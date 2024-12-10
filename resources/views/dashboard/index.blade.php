@@ -1,12 +1,24 @@
 <x-app-layout>
-    <x-slot name="header" class="bg-orange-500">
-        <h1 class="font-semibold text-2xl text-white leading-tight">
-            {{ __('Administración') }}
-        </h1>
-    </x-slot>
-    <div
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if (session()->has('message'))
+            <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                <div
+                    class="uppercase border border-green-600 bg-green-100 text-green-600 font-bold p-2 my-3 text-sm text-center">
+                    {{ session('message') }}
+                </div>
+            </div>
+            @endif
+            <div class="overflow-hidden">
+                <div class="md:flex md:justify-center text-2xl">
+                    <livewire:header-admin-stats />
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div
         class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:my-auto lg:max-w-7xl flex flex-row justify-between mb-32 md:py-16 gap-10 items-center">
-        <div class="flex flex-col space-y-16 w-[65%]">
+        <div class="flex flex-col space-y-16 w-full">
             <livewire:header-admin-stats />
 
             <div>
@@ -15,8 +27,8 @@
             </div>
         </div>
 
-        <div class="w-[35%] mt-7">
+        {{-- <div class="w-[35%] mt-7">
             <livewire:activity-monitoring />
-        </div>
-    </div>
+        </div> --}}
+    </div> --}}
 </x-app-layout>

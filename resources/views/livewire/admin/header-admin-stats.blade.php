@@ -1,6 +1,6 @@
-<div class="w-full md:max-w-7xl rounded-md shadow-xl py-4 px-10 flex justify-between">
-    <div class="flex flex-row gap-3">
-        <div class="rounded-md bg-orange-50 p-3">
+<div class="flex w-full justify-between items-center bg-white shadow-2xl rounded-md p-3 border border-gray-100">
+    <div class="flex flex-row gap-3 items-center">
+        <div class="rounded-md bg-orange-100 p-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -8,12 +8,12 @@
             </svg>
         </div>
         <div class="flex flex-col">
-            <p class="font-semibold text-gray-500">Ordenes</p>
-            <span class="font-bold">132</span>
+            <p class="font-semibold text-gray-500 text-sm">Ordenes</p>
+            <span class="font-bold text-[17px]">{{ $allOrders }}</span>
         </div>
     </div>
-    <div class="flex flex-row gap-3">
-        <div class="rounded-md bg-blue-50 p-3">
+    <div class="flex flex-row gap-3 items-center">
+        <div class="rounded-md bg-blue-100 p-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -22,12 +22,12 @@
 
         </div>
         <div class="flex flex-col">
-            <p class="font-semibold text-gray-500">Usuarios</p>
-            <span class="font-bold">12</span>
+            <p class="font-semibold text-gray-500 text-sm">Usuarios</p>
+            <span class="font-bold text-[17px]">{{ $allUsers }}</span>
         </div>
     </div>
-    <div class="flex flex-row gap-3">
-        <div class="rounded-md bg-green-50 p-3">
+    <div class="flex flex-row gap-3 items-center">
+        <div class="rounded-md bg-green-100 p-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -35,8 +35,24 @@
             </svg>
         </div>
         <div class="flex flex-col">
-            <p class="font-semibold text-gray-500">Ganancias</p>
-            <span class="font-bold">132</span>
+            <p class="font-semibold text-gray-500 text-sm">Ganancias</p>
+            <span class="font-bold text-[17px]">${{ $earnings }}</span>
+        </div>
+    </div>
+    <div class="flex flex-row gap-3 items-center">
+        <div class="rounded-md bg-red-100 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        </div>
+        <div class="flex flex-col">
+            <span class="font-semibold text-gray-500 text-sm">Tiempo Actual</span>
+            <div x-data="{ time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }"
+                x-init="setInterval(() => time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), 1000)">
+                <span x-text="time" class="font-bold text-[17px]"></span>
+            </div>
         </div>
     </div>
 </div>
