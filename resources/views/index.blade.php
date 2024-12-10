@@ -19,6 +19,10 @@
     border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700
     focus:bg-gray-700 active:bg-gray-900 focus:outline-none
     transition ease-in-out duration-150" href="{{ route('foods.index') }}">Empezar orden!</a>
+                <a class="mt-10 inline-flex items-center px-4 py-2 bg-gray-700 border
+    border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary
+    focus:bg-gray-700 active:bg-gray-900 focus:outline-none
+    transition ease-in-out duration-150" href="{{ route('foods.show') }}">Descubre tu menu!</a>
             </div>
             {{-- Rende image background --}}
             <div class="w-1/2">

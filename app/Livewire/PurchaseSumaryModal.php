@@ -22,6 +22,7 @@ class PurchaseSumaryModal extends Component
         $this->folio = $this->createFolio();
     }
 
+    #[On('openModal')]
     public function modal($food = null)
     {
         $this->isOpen = true;

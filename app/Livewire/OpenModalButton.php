@@ -18,6 +18,11 @@ class OpenModalButton extends Component
         }
     }
 
+    public function openModal()
+    {
+        $this->dispatch('openModal');
+    }
+
     public function render()
     {
         return view('livewire.open-modal-button');

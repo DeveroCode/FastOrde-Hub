@@ -15,6 +15,7 @@ Route::get('/', function () {
 
 Route::controller(FoodController::class)->group(function () {
     Route::get('/foods', 'index')->name('foods.index');
+    Route::get('/combinations', 'show')->name('foods.show');
 });
 
 Route::controller(OrdersController::class)->group(function () {

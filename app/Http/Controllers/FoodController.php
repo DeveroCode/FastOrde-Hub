@@ -10,4 +10,9 @@ class FoodController extends Controller
     {
         return view('menu');
     }
+
+    public function show()
+    {
+        return view('combinations');
+    }
 }
