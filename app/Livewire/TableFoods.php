@@ -10,23 +10,31 @@ use Livewire\WithPagination;
 class TableFoods extends Component
 {
     use WithPagination;
-    public $isOpen = false;
-    public $id;
     public $foodId;
-    public $food;
 
-    public function edit($fooId = null)
+    public function change($id)
     {
-        $this->id = $fooId;
-        $this->isOpen = true;
-        $this->dispatch('openEdit', $this->id);
+        $food = Food::find($id);
+
+        $food->is_available = !$food->is_available;
+        $food->save();
+
+        notify()->success('Estado cambiado con exito!');
+        return redirect()->route('dashboard.show');
+    }
+    public function delete($id)
+    {
+        $food = Food::find($id);
+        $food->delete();
+
+        notify()->success('Platillo eliminado con exito!');
+        return redirect()->route('dashboard.show');
     }
 
     public function render()
     {
         return view('livewire.tables.table-foods', [
-            'foods' => Food::paginate(12),
-            'isOpen' => $this->isOpen
+            'foods' => Food::paginate(12)
         ]);
     }
 }
