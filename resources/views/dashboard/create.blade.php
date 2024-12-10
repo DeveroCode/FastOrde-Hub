@@ -4,6 +4,5 @@
             {{ __('Agregar nuevo platillo') }}
         </h1>
     </x-slot>
-
     <livewire:add-food />
 </x-app-layout>

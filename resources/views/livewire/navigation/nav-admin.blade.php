@@ -5,10 +5,10 @@
     <x-nav-link :href="route('dashboard.create')" :active="request()->routeIs('dashboard.create')">
         {{ __('Agregar') }}
     </x-nav-link>
-    {{-- <x-nav-link :href="route('orders.check')" :active="request()->routeIs('orders.check')">
+    {{-- {{-- <x-nav-link :href="route('orders.check')" :active="request()->routeIs('orders.check')">
         {{ __('Entregas') }}
-    </x-nav-link>
-    <x-nav-link :href="route('orders.store')" :active="request()->routeIs('orders.store')">
-        {{ __('Crear Orden') }}
     </x-nav-link> --}}
+    <x-nav-link :href="route('dashboard.show')" :active="request()->routeIs('dashboard.show')">
+        {{ __('Admon. Comidas') }}
+    </x-nav-link>
 </div>

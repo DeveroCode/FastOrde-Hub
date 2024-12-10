@@ -28,6 +28,8 @@ Route::middleware(['auth', 'verified', IsAdmin::class])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/administration/index', 'index')->name('dashboard.index');
         Route::get('/add-food', 'create')->name('dashboard.create');
+        Route::get('/show-list-foods', 'show')->name('dashboard.show');
+        Route::get('/edit-food/{food}', 'edit')->name('dashboard.edit');
     });
 
     Route::controller(ProfileController::class)->group(function () {

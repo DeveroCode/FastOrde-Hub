@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\IsAdmin;
+use App\Models\Food;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -21,5 +22,17 @@ class DashboardController extends Controller
     public function create()
     {
         return view('dashboard.create');
+    }
+
+    public function show()
+    {
+        return view('dashboard.show');
+    }
+
+    public function edit(Food $food)
+    {
+        return view('dashboard.edit', [
+            'food' => $food
+        ]);
     }
 }

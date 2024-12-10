@@ -30,8 +30,8 @@ class AddFood extends Component
 
         $data = array_map('strtolower', $data);
 
-        $imagen = $this->imagen->store('foods', 'public');
-        $data['imagen'] = str_replace('public/', '', $imagen);
+        $imagen = $this->imagen->store('/foods');
+        $data['imagen'] = str_replace('/foods/', '', $imagen);
 
         Food::create([
             'name' => $data['name'],
