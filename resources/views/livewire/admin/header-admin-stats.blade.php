@@ -1,4 +1,4 @@
-<div class="flex w-full justify-between items-center bg-white shadow-2xl rounded-md p-3 border border-gray-100">
+<div class="flex w-full justify-between items-center bg-white rounded-md shadow-md p-3 border border-gray-100">
     <div class="flex flex-row gap-3 items-center">
         <div class="rounded-md bg-orange-100 p-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
