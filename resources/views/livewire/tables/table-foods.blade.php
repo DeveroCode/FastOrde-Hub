@@ -68,4 +68,5 @@
 
     <div class="mt-4 flex justify-end">
         {{ $foods->links('vendor.livewire.simple-tailwind') }}
-    </div </div>
+    </div>
+</div>

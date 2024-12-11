@@ -2,9 +2,10 @@
 
 namespace App\Livewire;
 
-use App\Models\Purchase_summary;
 use App\Models\Status;
 use Livewire\Component;
+use App\Models\ActivitiesUsers;
+use App\Models\Purchase_summary;
 use Illuminate\Support\Facades\DB;
 
 class ActiveOrders extends Component
@@ -14,6 +15,13 @@ class ActiveOrders extends Component
     {
         $purchase_summary = Purchase_summary::where('id', $id)->first();
         $purchase_summary->update(['status_id' => 3]);
+        $status = Status::where('id', 3)->first();
+
+        ActivitiesUsers::create([
+            'user_id' => auth()->user()->id,
+            'purchase_summary_id' => $purchase_summary->id,
+            'message' => 'Orden' . ' ' . $status->name
+        ]);
 
         notify()->success('Orden confirmada y lista para entrega!');
     }

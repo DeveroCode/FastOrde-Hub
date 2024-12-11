@@ -1,4 +1,5 @@
-<div class="overflow-x-auto">
+<div class="overflow-x-auto" wire:poll.delay.500ms='loaders'>
+    @if($orders)
     <table class="min-w-full bg-white rounded-lg shadow-md">
         <thead class="bg-red-500 text-white">
             <tr>
@@ -10,13 +11,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="border-b hover:bg-orange-100">
-                <td class="px-4 py-3">sad</td>
-                <td class="px-4 py-3">asdwwaw</td>
-                <td class="px-4 py-3">asd</td>
-                <td class="px-4 py-3 text-green-600 font-bold">adsadas</td>
-                <td class="px-4 py-3">Hello</td>
+            @foreach ($orders as $order)
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">#{{ $order->folio }}</td>
+                <td class="px-4 py-3">{{ $order->name }}</td>
+                <td class="px-4 py-3">{{ $order->total_quantity }}</td>
+                <td class="px-4 py-3 text-green-600 font-bold">${{ $order->total_price }}</td>
+                <td class="px-4 py-3">{{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}</td>
             </tr>
+            @endforeach
         </tbody>
     </table>
+    @else
+    <p class="text-center text-gray-600">No hay ordenes recientes</p>
+    @endif
+
+    <div class="mt-4 flex justify-end">
+        {{ $orders->links('vendor.livewire.simple-tailwind') }}
+    </div>
 </div>

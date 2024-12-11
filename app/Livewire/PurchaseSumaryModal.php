@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\ActivitiesUsers;
 use Carbon\Carbon;
 use App\Models\Food;
 use Livewire\Component;
@@ -51,8 +52,6 @@ class PurchaseSumaryModal extends Component
 
     public function createOrder()
     {
-
-
         $purchase = Purchase_summary::create([
             'folio' => $this->folio,
             'status_id' => 1
@@ -72,6 +71,11 @@ class PurchaseSumaryModal extends Component
 
         $this->selectedFoods = [];
         $this->isOpen = false;
+
+        ActivitiesUsers::create([
+            'purchase_summary_id' => $purchase->id,
+            'message' => 'Orden creada con exito!'
+        ]);
 
         notify()->success('Orden creada con exito!');
         return redirect()->route('home');

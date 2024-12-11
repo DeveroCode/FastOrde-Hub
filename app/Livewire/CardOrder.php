@@ -2,10 +2,11 @@
 
 namespace App\Livewire;
 
-use App\Models\Purchase_summary;
 use App\Models\Status;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use App\Models\ActivitiesUsers;
+use App\Models\Purchase_summary;
+use Illuminate\Support\Facades\DB;
 
 class CardOrder extends Component
 {
@@ -20,6 +21,13 @@ class CardOrder extends Component
     {
         $purchase_summary = Purchase_summary::where('folio', $folio)->first();
         $purchase_summary->update(['status_id' => $status_id]);
+        $status = Status::where('id', $status_id)->first();
+
+        ActivitiesUsers::create([
+            'user_id' => auth()->user()->id,
+            'purchase_summary_id' => $purchase_summary->id,
+            'message' => 'Orden' . ' ' . $status->name
+        ]);
 
         notify()->success('Orden actualizada!');
     }

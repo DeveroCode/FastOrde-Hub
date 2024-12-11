@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Purchase_summary::class);
     }
+
+    public function activities()
+    {
+        return $this->hasMany(ActivitiesUsers::class, 'user_id');
+    }
 }

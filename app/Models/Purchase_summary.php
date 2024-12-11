@@ -22,4 +22,9 @@ class Purchase_summary extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function activities()
+    {
+        return $this->hasMany(ActivitiesUsers::class, 'purchase_summary_id');
+    }
 }

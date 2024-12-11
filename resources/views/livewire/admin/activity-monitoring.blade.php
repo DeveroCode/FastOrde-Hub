@@ -1,41 +1,33 @@
-<div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+<div class="bg-white rounded-lg shadow-md border border-gray-200" wire:poll.delay.500ms='getAct'>
     <div class="px-6 py-4">
         <h2 class="text-xl font-bold">Actividades Recientes</h2>
         <p class="text-sm">Actualizaciones en tiempo real</p>
     </div>
     <div class="p-4 divide-y divide-gray-200">
         <!-- Actividad 1 -->
+        @foreach ($activities as $activity)
         <div class="flex items-center py-3">
-            <div class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-semibold">
-                SM
+            <div
+                class="{{ $activity->users ? 'bg-red-500' : 'bg-green-500' }} rounded-full w-10 h-10 flex items-center justify-center text-white font-bold uppercase">
+                @php
+                $nameParts = explode(' ', $activity->users ? $activity->users->name : 'AC');
+                $initials = strtoupper(substr($nameParts[0], 0, 1) . substr($nameParts[1] ?? '', 0, 1));
+                @endphp
+                {{ $initials }}
             </div>
             <div class="ml-4">
-                <p class="text-gray-800 font-semibold">Samuel Méndez</p>
-                <p class="text-gray-500 text-sm">Actualizó el estado de la orden #456</p>
+                <p class="font-semibold text-gray-800">
+                    {{ $activity->users ? $activity->users->name . ' ' . 'ha actualizado' : 'Actualización de actividad'
+                    }}
+                </p>
+                <p class="text-gray-500 text-sm">{{ $activity->message }} con folio #{{ $activity->purchase->folio
+                    }}</p>
             </div>
-            <div class="ml-auto text-green-600 font-bold text-sm">+ $1,299.00</div>
         </div>
-        <!-- Actividad 2 -->
-        <div class="flex items-center py-3">
-            <div class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-semibold">
-                AC
-            </div>
-            <div class="ml-4">
-                <p class="text-gray-800 font-semibold">Ana Camacho</p>
-                <p class="text-gray-500 text-sm">Agregó un comentario en la orden #789</p>
-            </div>
-            <div class="ml-auto text-green-600 font-bold text-sm">+ $499.00</div>
-        </div>
-        <!-- Actividad 3 -->
-        <div class="flex items-center py-3">
-            <div class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-semibold">
-                JP
-            </div>
-            <div class="ml-4">
-                <p class="text-gray-800 font-semibold">Jorge Pérez</p>
-                <p class="text-gray-500 text-sm">Canceló la orden #123</p>
-            </div>
-            <div class="ml-auto text-red-600 font-bold text-sm">- $799.00</div>
-        </div>
+        @endforeach
+    </div>
+
+    <div class="p-4 flex justify-end">
+        {{ $activities->links('vendor.livewire.simple-tailwind') }}
     </div>
 </div>

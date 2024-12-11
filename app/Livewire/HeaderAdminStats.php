@@ -30,6 +30,14 @@ class HeaderAdminStats extends Component
     {
         return DB::table('users')->where('rol', '!=', 'admin')->count();
     }
+
+    public function loaders()
+    {
+        $this->earnings = $this->getAllGains();
+        $this->allOrders = $this->getAllOrders();
+        $this->allUsers = $this->getAllEmployees();
+    }
+
     public function render()
     {
         return view('livewire.admin.header-admin-stats');
